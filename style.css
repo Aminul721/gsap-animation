@@ -1,0 +1,87 @@
+#wrapper {
+    padding: 2vh 2vw;
+}
+.item {
+    height: 300px;
+    border-radius: 5px;
+    background-color: #ddd;
+}
+
+
+/*bg color*/
+.effect1 {
+    background-color: #c1605c;
+}
+
+.effect-split {
+    background-color: #ab5772;
+}
+
+.effect-timeline {
+    background-color: #88557e;
+}
+
+.effect4 {
+    background-color: #61547c;
+}
+
+.effect-fly {
+    background-color: #40506e;
+}
+
+.effect6 {
+    background-color: #2f4858;
+}
+
+
+/*Animation text---------------------*/
+/* {effect1} */
+.text1 {
+    position: relative;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+}
+.text1 span {
+    opacity: 0;
+}
+
+/* {effect2} */
+.text-split {
+    overflow: hidden;
+}
+
+/* {effect3} */
+.text-timeline {
+    padding: 0;
+    overflow: hidden;
+}
+.text-timeline span {
+    display: inline-block;
+}
+
+
+/* {effect5} */
+.text-fly {
+    overflow: hidden;
+}
+.text-fly span {
+    display: inline-block;
+}
+
+/* {effect6} */
+.text6 {
+    display: inline-block;
+    width: auto;
+}
+.text6 span {
+    display: inline-block;
+}
+.text6 span.line {
+    width: 100%;
+    background: #fff;
+}
+.text6 span.text,
+.text6 span.icon {
+    padding: 10px 5px;
+}
