@@ -16,7 +16,7 @@
 
         animation() {
             /** Fade Left */
-            let fade_left = gsap.utils.toArray(".fade_left");
+            let fade_left = gsap.utils.toArray('[dataAnimation="fade left"]');
             gsap.set(fade_left, {
                 opacity: 0,
                 x: -100,
@@ -28,8 +28,8 @@
                         opacity: 1,
                         x: 0,
                         ease: "power2.out",
-                        duration: 1.5,
-                        delay: i * 0.3,
+                        duration: 0.8,
+                        delay: i * 0.2,
                         scrollTrigger: {
                             trigger: element,
                             start: "top center+=150",
@@ -42,7 +42,7 @@
             }
 
             /** Fade right */
-            let fade_right = gsap.utils.toArray(".fade_right");
+            let fade_right = gsap.utils.toArray('[dataAnimation="fade right"]');
             gsap.set(fade_right, {
                 opacity: 0,
                 x: 100,
@@ -54,8 +54,8 @@
                         opacity: 1,
                         x: 0,
                         ease: "power2.out",
-                        duration: 1.5,
-                        delay: i * 0.3,
+                        duration: 0.8,
+                        delay: i * 0.2,
                         scrollTrigger: {
                             trigger: element,
                             start: "top center+=150",
@@ -68,7 +68,7 @@
             }
 
             /** Fade up */
-            let fade_bottom = gsap.utils.toArray(".fade_bottom");
+            let fade_bottom = gsap.utils.toArray('[dataAnimation="fade up"]');
             if (fade_bottom.length) {
                 gsap.set(fade_bottom, { opacity: 0, y: 100 });
 
@@ -77,8 +77,8 @@
                         opacity: 1,
                         y: 0,
                         ease: "sine",
-                        duration: 1.5,
-                        delay: i * 0.3,
+                        duration: 0.8,
+                        delay: i * 0.2,
                         scrollTrigger: {
                             trigger: element,
                             start: "top bottom",
@@ -89,20 +89,167 @@
                     });
                 });
             }
+
+            /** zoom in image left */
+            let zoomIn_imgLeft = gsap.utils.toArray('[dataAnimation="zoom in img"]');
+            gsap.set(zoomIn_imgLeft, {
+                opacity: 0,
+                x: -100,
+            });
+
+            if (zoomIn_imgLeft) {
+                zoomIn_imgLeft.forEach((element, i) => {
+                    gsap.to(element, {
+                        opacity: 1,
+                        x: 0,
+                        ease: "power2.out",
+                        duration: 0.8,
+                        delay: i * 0.2,
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top center+=150",
+                            toggleActions: "play none none none",
+                            markers: false,
+                            once: true
+                        }
+                    });
+                });
+            }
+
+            let revealImgLeftOut = document.querySelectorAll('[dataAnimation="img zoom out left"]');
+            if (revealImgLeftOut) {
+                revealImgLeftOut.forEach((imgElem) => {
+                    let image = imgElem.querySelector("img");
+                    let timelineImg = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: imgElem, 
+                            toggleActions: "play none none none" 
+                        } 
+                    });
+                    timelineImg.set(imgElem, {
+                        autoAlpha: 1 
+                    });
+                    timelineImg.from(imgElem, 
+                        1.5, 
+                        { 
+                            xPercent: -100, 
+                            ease: Power2.out 
+                        }
+                    );
+                    timelineImg.from(
+                        image, 
+                        1.5, 
+                        { 
+                            xPercent: 100, 
+                            scale: 1.3, 
+                            delay: -1.5, 
+                            ease: Power2.out 
+                        }
+                    );
+                });
+            }
+
+            let revealImgRightOut = document.querySelectorAll('[dataAnimation="img zoom out right"]');
+            if (revealImgRightOut) {
+                revealImgRightOut.forEach((imgElem) => {
+                    let image = imgElem.querySelector("img");
+                    let timelineImg = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: imgElem, 
+                            toggleActions: "play none none none" 
+                        } 
+                    });
+                    timelineImg.set(imgElem, {
+                        autoAlpha: 1 
+                    });
+                    timelineImg.from(imgElem, 
+                        1.5, 
+                        { 
+                            xPercent: 100, 
+                            ease: Power2.out 
+                        }
+                    );
+                    timelineImg.from(
+                        image, 
+                        1.5, 
+                        { 
+                            xPercent: -100, 
+                            scale: 1.3, 
+                            delay: -1.5, 
+                            ease: Power2.out 
+                        }
+                    );
+                });
+            }
+
+            let revealImgLeftIn = document.querySelectorAll('[dataAnimation="img zoom in left"]');
+            if (revealImgLeftIn) {
+                revealImgLeftIn.forEach((imgElem) => {
+                    let image = imgElem.querySelector("img");
+                    let timelineImg = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: imgElem,
+                            toggleActions: "play none none none"
+                        }
+                    });
+                    timelineImg.set(imgElem, {
+                        autoAlpha: 1,
+                    });
+                    timelineImg.from(imgElem, 1.5, {
+                        xPercent: -100, 
+                        ease: Power2.out,
+                        scale: 0.5,
+                    });
+                    timelineImg.from(image, 1.5, {
+                        xPercent: 100, 
+                        scale: 1, 
+                        delay: -1.5, 
+                        ease: Power2.out 
+                    });
+                });
+            }
+
+            let revealImgRightIn = document.querySelectorAll('[dataAnimation="img zoom in right"]');
+            if (revealImgRightIn) {
+                revealImgRightIn.forEach((imgElem) => {
+                    let image = imgElem.querySelector("img");
+                    let timelineImg = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: imgElem,
+                            toggleActions: "play none none none"
+                        }
+                    });
+                    timelineImg.set(imgElem, {
+                        autoAlpha: 1,
+                    });
+                    timelineImg.from(imgElem, 1.5, {
+                        xPercent: 100, 
+                        ease: Power2.out,
+                        scale: 0.5,
+                    });
+                    timelineImg.from(image, 1.5, {
+                        xPercent: -100, 
+                        scale: 1, 
+                        delay: -1.5, 
+                        ease: Power2.out 
+                    });
+                });
+            }
+
         },
     };
     function textAnimation(element) {
-        //effect1
-        $(".text-split").each(function () {
+        //split
+        $('[textAnimation="split"]').each(function () {
             $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='2_text'>$&</span>"));
         });
-        var textSplit = $(".text-split span"),
+        var textSplit = $('[textAnimation="split"] span'),
             textSplit_1 = new TimelineMax({ repeat: 0 });
             textSplit_1.staggerFrom(
                 textSplit,
                 0.5,
                 {
-                    top: "+=25px",
+                    // top: "+=25px",
                     rotation: "-=-3deg",
                     alpha: 0,
                     scale: 0.8,
@@ -119,11 +266,11 @@
                 "+=1.0"
             );
 
-        //effect3
-        $(".text-timeline").each(function () {
+        //timeline
+        $('[textAnimation="timeline"]').each(function () {
             $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='_timeline'>$&</span>"));
         });
-        var textTimeline = $(".text-timeline span"),
+        var textTimeline = $('[textAnimation="timeline"] span'),
             textTimeline_2 = new TimelineMax({ repeat: 0 });
             textTimeline_2.staggerFrom(
                 textTimeline,
@@ -144,11 +291,11 @@
                 "+=1.0"
             );
 
-        //effect5
-        $(".text-fly").each(function () {
+        //fly
+        $('[textAnimation="fly"]').each(function () {
             $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='_fly'>$&</span>"));
         });
-        var textFly = $(".text-fly span"),
+        var textFly = $('[textAnimation="fly"] span'),
             textFly_3 = new TimelineMax({ repeat: 0 });
             textFly_3.staggerFrom(
                 textFly,
