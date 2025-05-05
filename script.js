@@ -16,77 +16,85 @@
 
         animation() {
             /** Fade Left */
-            let fade_left = gsap.utils.toArray('[dataAnimation="fade left"]');
-            gsap.set(fade_left, {
-                opacity: 0,
-                x: -100,
-            });
+            let animatedSecFadeLeft = document.querySelectorAll('.section-fadeLeft');
+            if(animatedSecFadeLeft){
+                animatedSecFadeLeft.forEach((element, index) => {
+                    let animEle = gsap.utils.toArray(element.querySelectorAll('[dataAnimation="fade left"]'));
+                    gsap.set(animEle, { opacity: 0, x: -100 });
 
-            if (fade_left) {
-                fade_left.forEach((element, i) => {
-                    gsap.to(element, {
-                        opacity: 1,
-                        x: 0,
-                        ease: "power2.out",
-                        duration: 0.8,
-                        delay: i * 0.2,
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top center+=150",
-                            toggleActions: "play none none none",
-                            markers: false,
-                            once: true
-                        }
-                    });
-                });
+                    if(animEle){
+                        animEle.forEach((elm, i) => {
+                            gsap.to(elm, {
+                                opacity: 1,
+                                x: 0,
+                                ease: "power2.out",
+                                duration: 0.8,
+                                delay: i * 0.2,
+                                scrollTrigger: {
+                                    trigger: element,
+                                    start: "top center+=150",
+                                    toggleActions: "play none none none",
+                                    markers: false,
+                                    once: true
+                                }
+                            })
+                        })
+                    }
+                })
             }
 
             /** Fade right */
-            let fade_right = gsap.utils.toArray('[dataAnimation="fade right"]');
-            gsap.set(fade_right, {
-                opacity: 0,
-                x: 100,
-            });
+            let animatedSecFadeRight = document.querySelectorAll('.section-fadeRight');
+            if(animatedSecFadeRight){
+                animatedSecFadeRight.forEach((element, index) => {
+                    let animEle = gsap.utils.toArray(element.querySelectorAll('[dataAnimation="fade right"]'));
+                    gsap.set(animEle, { opacity: 0, x: 100 });
 
-            if (fade_right) {
-                fade_right.forEach((element, i) => {
-                    gsap.to(element, {
-                        opacity: 1,
-                        x: 0,
-                        ease: "power2.out",
-                        duration: 0.8,
-                        delay: i * 0.2,
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top center+=150",
-                            toggleActions: "play none none none",
-                            markers: false,
-                            once: true
-                        },
-                    });
-                });
+                    if(animEle){
+                        animEle.forEach((elm, i) => {
+                            gsap.to(elm, {
+                                opacity: 1,
+                                x: 0,
+                                ease: "power2.out",
+                                duration: 0.8,
+                                delay: i * 0.2,
+                                scrollTrigger: {
+                                    trigger: element,
+                                    start: "top center+=150",
+                                    toggleActions: "play none none none",
+                                    markers: false,
+                                    once: true
+                                }
+                            })
+                        })
+                    }
+                })
             }
 
             /** Fade up */
-            let fade_bottom = gsap.utils.toArray('[dataAnimation="fade up"]');
-            if (fade_bottom.length) {
-                gsap.set(fade_bottom, { opacity: 0, y: 100 });
-
-                fade_bottom.forEach((element, i) => {
-                    gsap.to(element, {
-                        opacity: 1,
-                        y: 0,
-                        ease: "sine",
-                        duration: 0.8,
-                        delay: i * 0.2,
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top bottom",
-                            toggleActions: "play none none none",
-                            markers: false,
-                            once: true
-                        },
-                    });
+            let animatedSecFadeup = document.querySelectorAll('.section-fadeUp');
+            if(animatedSecFadeup){
+                animatedSecFadeup.forEach((element, index) => {
+                    let animEle = gsap.utils.toArray(element.querySelectorAll('[dataAnimation="fade up"]'));
+                    gsap.set(animEle, { opacity: 0, y: 100 });
+                    if(animEle){
+                        animEle.forEach((elm, i) => {
+                            gsap.to(elm, {
+                                opacity: 1,
+                                y: 0,
+                                ease: "sine",
+                                duration: 0.8,
+                                delay: i * 0.2,
+                                scrollTrigger: {
+                                    trigger: element,
+                                    start: "top+=60 bottom",
+                                    toggleActions: "play none none none",
+                                    markers: false,
+                                    once: true
+                                }
+                            });
+                        });
+                    }
                 });
             }
 
